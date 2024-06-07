@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "name": "GlobalComponents",
+            "folderColor": {
+                "r": 0.4714619517326355,
+                "g": 0.18022429943084718,
+                "b": 0.849056601524353,
+                "a": 1.0
+            },
+            "folderImageType": 0
+        },
+        {
+            "name": "Environment",
+            "folderColor": {
+                "r": 0.3006761074066162,
+                "g": 0.7358490228652954,
+                "b": 0.0034709942992776634,
+                "a": 1.0
+            },
+            "folderImageType": 0
+        }
+    ]
+}
