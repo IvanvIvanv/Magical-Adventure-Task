@@ -8,6 +8,7 @@ public class InteractorCrosshair : MonoBehaviour
     public float MaxDistance = 2f;
     public TextMeshProUGUI _interactorTmpu;
     private RectTransform _rectTransform;
+    private IInteractable _objectInCrosshair;
 
     private void Start()
     {
@@ -16,7 +17,7 @@ public class InteractorCrosshair : MonoBehaviour
 
     void Update()
     {
-        if (!RaycastInteraction()) _interactorTmpu.text = string.Empty;
+        if (!RaycastInteraction()) ClearCrosshair();
     }
 
     private bool RaycastInteraction()
@@ -24,7 +25,19 @@ public class InteractorCrosshair : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(_rectTransform.position);
         if (!Physics.Raycast(ray, out var hitInfo, MaxDistance)) return false;
         if (!hitInfo.collider.TryGetComponent<IInteractable>(out var iinteractable)) return false;
-        _interactorTmpu.text = iinteractable.Name;
+        _objectInCrosshair = iinteractable;
+        _interactorTmpu.text = iinteractable.InteractionText;
         return true;
+    }
+
+    private void ClearCrosshair()
+    {
+        _objectInCrosshair = null;
+        _interactorTmpu.text = string.Empty;
+    }
+
+    public void Interact()
+    {
+        _objectInCrosshair?.Interact();
     }
 }

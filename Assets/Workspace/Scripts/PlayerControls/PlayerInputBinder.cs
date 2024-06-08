@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputBinder : MonoBehaviour
 {
     public InputContainer InputContainer;
+    public InteractorCrosshair InteractorCrosshair;
     private PlayerMovement _playerMovement;
     private PlayerJump _playerJump;
     private PlayerLook _playerLook;
@@ -18,6 +19,7 @@ public class PlayerInputBinder : MonoBehaviour
         _playerLook = GetComponent<PlayerLook>();
         InputContainer.InputAsset.Player.Jump.started += OnJump;
         InputContainer.InputAsset.Player.Look.started += OnLook;
+        InputContainer.InputAsset.Player.Interact.started += OnInteract;
     }
 
     private void FixedUpdate()
@@ -39,5 +41,10 @@ public class PlayerInputBinder : MonoBehaviour
     private void OnLook(InputAction.CallbackContext context)
     {
         _playerLook.Look(context.ReadValue<Vector2>());
+    }
+
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        InteractorCrosshair.Interact();
     }
 }
