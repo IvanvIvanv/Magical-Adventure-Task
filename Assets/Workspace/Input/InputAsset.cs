@@ -154,6 +154,62 @@ public partial class @InputAsset: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""278248b5-2e67-4419-9601-042d301bd7cb"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseDelta"",
+                    ""type"": ""Value"",
+                    ""id"": ""c7499505-d5bd-4b43-8986-032b17ab0d31"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""45479c99-337b-4133-bbcc-1d5be9efcc8e"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseDelta"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""ActionMapSwitcher"",
+            ""id"": ""4aa47c45-7aa0-4a9e-9ee9-c478e5e070aa"",
+            ""actions"": [
+                {
+                    ""name"": ""SwitchActionMap"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1e3d15e-bf70-43da-b485-68844fe4261c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""c28cfcca-2036-42f8-8b3c-6e8e3d7cf88e"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchActionMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -164,6 +220,12 @@ public partial class @InputAsset: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_MouseDelta = m_UI.FindAction("MouseDelta", throwIfNotFound: true);
+        // ActionMapSwitcher
+        m_ActionMapSwitcher = asset.FindActionMap("ActionMapSwitcher", throwIfNotFound: true);
+        m_ActionMapSwitcher_SwitchActionMap = m_ActionMapSwitcher.FindAction("SwitchActionMap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -291,11 +353,111 @@ public partial class @InputAsset: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_MouseDelta;
+    public struct UIActions
+    {
+        private @InputAsset m_Wrapper;
+        public UIActions(@InputAsset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseDelta => m_Wrapper.m_UI_MouseDelta;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @MouseDelta.started += instance.OnMouseDelta;
+            @MouseDelta.performed += instance.OnMouseDelta;
+            @MouseDelta.canceled += instance.OnMouseDelta;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @MouseDelta.started -= instance.OnMouseDelta;
+            @MouseDelta.performed -= instance.OnMouseDelta;
+            @MouseDelta.canceled -= instance.OnMouseDelta;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
+
+    // ActionMapSwitcher
+    private readonly InputActionMap m_ActionMapSwitcher;
+    private List<IActionMapSwitcherActions> m_ActionMapSwitcherActionsCallbackInterfaces = new List<IActionMapSwitcherActions>();
+    private readonly InputAction m_ActionMapSwitcher_SwitchActionMap;
+    public struct ActionMapSwitcherActions
+    {
+        private @InputAsset m_Wrapper;
+        public ActionMapSwitcherActions(@InputAsset wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SwitchActionMap => m_Wrapper.m_ActionMapSwitcher_SwitchActionMap;
+        public InputActionMap Get() { return m_Wrapper.m_ActionMapSwitcher; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ActionMapSwitcherActions set) { return set.Get(); }
+        public void AddCallbacks(IActionMapSwitcherActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ActionMapSwitcherActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ActionMapSwitcherActionsCallbackInterfaces.Add(instance);
+            @SwitchActionMap.started += instance.OnSwitchActionMap;
+            @SwitchActionMap.performed += instance.OnSwitchActionMap;
+            @SwitchActionMap.canceled += instance.OnSwitchActionMap;
+        }
+
+        private void UnregisterCallbacks(IActionMapSwitcherActions instance)
+        {
+            @SwitchActionMap.started -= instance.OnSwitchActionMap;
+            @SwitchActionMap.performed -= instance.OnSwitchActionMap;
+            @SwitchActionMap.canceled -= instance.OnSwitchActionMap;
+        }
+
+        public void RemoveCallbacks(IActionMapSwitcherActions instance)
+        {
+            if (m_Wrapper.m_ActionMapSwitcherActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IActionMapSwitcherActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ActionMapSwitcherActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ActionMapSwitcherActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ActionMapSwitcherActions @ActionMapSwitcher => new ActionMapSwitcherActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnMouseDelta(InputAction.CallbackContext context);
+    }
+    public interface IActionMapSwitcherActions
+    {
+        void OnSwitchActionMap(InputAction.CallbackContext context);
     }
 }

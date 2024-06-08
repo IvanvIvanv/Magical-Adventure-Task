@@ -16,11 +16,6 @@ public class InputContainer : MonoBehaviour
         private set => _inputAsset = value;
     }
 
-    private void OnEnable()
-    {
-        InputAsset.Enable();
-    }
-
     private void OnDisable()
     {
         InputAsset.Disable();

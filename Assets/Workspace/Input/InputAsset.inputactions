@@ -132,6 +132,62 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "278248b5-2e67-4419-9601-042d301bd7cb",
+            "actions": [
+                {
+                    "name": "MouseDelta",
+                    "type": "Value",
+                    "id": "c7499505-d5bd-4b43-8986-032b17ab0d31",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "45479c99-337b-4133-bbcc-1d5be9efcc8e",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseDelta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ActionMapSwitcher",
+            "id": "4aa47c45-7aa0-4a9e-9ee9-c478e5e070aa",
+            "actions": [
+                {
+                    "name": "SwitchActionMap",
+                    "type": "Button",
+                    "id": "e1e3d15e-bf70-43da-b485-68844fe4261c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c28cfcca-2036-42f8-8b3c-6e8e3d7cf88e",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchActionMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
