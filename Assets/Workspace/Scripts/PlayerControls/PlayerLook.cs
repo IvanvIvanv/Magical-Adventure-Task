@@ -6,26 +6,22 @@ using UnityEngine.InputSystem;
 public class PlayerLook : MonoBehaviour
 {
     public Camera Camera;
-    public InputContainer InputContainer;
-    private InputAction _lookAction;
-    private Vector2 _desiredLook;
+    public Vector2 Sensitivity = new(1f, 1f);
+    private Vector2 _orientation;
+    private bool _startFlag;
 
     private void Start()
     {
-        _desiredLook = new(transform.rotation.eulerAngles.x, 0f);
-        _lookAction = InputContainer.InputAsset.Player.Look;
-        _lookAction.started += OnLook;
+        _orientation = new(transform.rotation.eulerAngles.y, 0f);
     }
 
-    private void Update()
+    public void Look(Vector2 lookDelta)
     {
-        Vector2 lerpLook = Vector2.Lerp(_desiredLook, new(transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.x), Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0f, lerpLook.x, 0f);
-    }
-
-    private void OnLook(InputAction.CallbackContext context)
-    {
-        var lookDelta = context.ReadValue<Vector2>();
-        _desiredLook += lookDelta;
+        if (!_startFlag) { _startFlag = true; return; }
+        _orientation += lookDelta * Sensitivity;
+        _orientation.y = Mathf.Clamp(_orientation.y, -90f, 90f);
+        if (_orientation.x >= float.MaxValue || _orientation.x <= float.MinValue) _orientation.x = 0f;
+        Camera.transform.localRotation = Quaternion.Euler(-_orientation.y, 0f, 0f);
+        transform.rotation = Quaternion.Euler(0f, _orientation.x, 0f);
     }
 }
