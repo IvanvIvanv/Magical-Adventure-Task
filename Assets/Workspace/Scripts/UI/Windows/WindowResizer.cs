@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     public RectTransform WindowRect;
+    public RectTransform ParentRect;
     public Vector2 MinSize;
     public Vector2 MaxSize;
 
@@ -15,6 +16,7 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
     public void OnPointerDown(PointerEventData data)
     {
         WindowRect.SetAsLastSibling();
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(WindowRect, data.position, data.pressEventCamera, out _previousPointerPosition);
     }
 
@@ -32,6 +34,7 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
             );
 
         WindowRect.sizeDelta = sizeDelta;
+        WindowRect.ResizeFullyOnScreen(ParentRect);
 
         _previousPointerPosition = _currentPointerPosition;
     }

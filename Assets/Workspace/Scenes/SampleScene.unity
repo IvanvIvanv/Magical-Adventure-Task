@@ -1304,8 +1304,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: -202.39}
-  m_SizeDelta: {x: 258.14093, y: 284.1454}
+  m_AnchoredPosition: {x: 308, y: 124.24}
+  m_SizeDelta: {x: 82, y: 79.93}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &544254966
 MonoBehaviour:
@@ -2813,8 +2813,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WindowRect: {fileID: 544254965}
+  ParentRect: {fileID: 867201526}
   Canvas: {fileID: 1019385548}
-  WindowInputBinder: {fileID: 1531569820}
 --- !u!1 &2009348929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,6 +3236,11 @@ PrefabInstance:
       propertyPath: Window
       value: 
       objectReference: {fileID: 544254965}
+    - target: {fileID: 4607601803226684299, guid: 8e32abb77efd7b54db30ef58b8d41ca0,
+        type: 3}
+      propertyPath: ParentRect
+      value: 
+      objectReference: {fileID: 867201526}
     - target: {fileID: 4607601803226684299, guid: 8e32abb77efd7b54db30ef58b8d41ca0,
         type: 3}
       propertyPath: WindowRect
