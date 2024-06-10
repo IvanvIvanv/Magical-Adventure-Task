@@ -40,10 +40,22 @@ public static class RectTransformExtensions
 
     public static void ResizeFullyOnScreen(this RectTransform rect, RectTransform parentRect)
     {
+        Vector2 originalPivot = rect.pivot;
+        rect.SetPivot(new(0f, 0f));
+
         Vector2 maxSize = parentRect.rect.max - rect.anchoredPosition;
         Vector2 newSize = rect.sizeDelta;
+
         if (rect.sizeDelta.x > maxSize.x) newSize.x = maxSize.x;
         if (rect.sizeDelta.y > maxSize.y) newSize.y = maxSize.y;
+
+        rect.SetPivot(new(1f, 1f));
+        maxSize = rect.anchoredPosition - parentRect.rect.min;
+
+        if (rect.sizeDelta.x > maxSize.x) newSize.x = maxSize.x;
+        if (rect.sizeDelta.y > maxSize.y) newSize.y = maxSize.y;
+
+        rect.SetPivot(originalPivot);
         rect.sizeDelta = newSize;
     }
 }

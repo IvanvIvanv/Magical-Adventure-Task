@@ -9,6 +9,7 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
     public RectTransform ParentRect;
     public Vector2 MinSize;
     public Vector2 MaxSize;
+    public Vector2 ResizeDirection = new(1f, 1f);
 
     private Vector2 _currentPointerPosition;
     private Vector2 _previousPointerPosition;
@@ -16,8 +17,14 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
     public void OnPointerDown(PointerEventData data)
     {
         WindowRect.SetAsLastSibling();
+        WindowRect.SetPivot(DirectionToPivot());
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(WindowRect, data.position, data.pressEventCamera, out _previousPointerPosition);
+    }
+
+    private Vector2 DirectionToPivot()
+    {
+        return new(Mathf.InverseLerp(1f, -1f, ResizeDirection.x), Mathf.InverseLerp(1f, -1f, ResizeDirection.y));
     }
 
     public void OnDrag(PointerEventData data)
@@ -27,7 +34,7 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
         RectTransformUtility.ScreenPointToLocalPointInRectangle(WindowRect, data.position, data.pressEventCamera, out _currentPointerPosition);
         Vector2 resizeValue = _currentPointerPosition - _previousPointerPosition;
 
-        sizeDelta += new Vector2(resizeValue.x, resizeValue.y);
+        sizeDelta += new Vector2(resizeValue.x, resizeValue.y) * ResizeDirection;
         sizeDelta = new Vector2(
             Mathf.Clamp(sizeDelta.x, MinSize.x, MaxSize.x),
             Mathf.Clamp(sizeDelta.y, MinSize.y, MaxSize.y)
