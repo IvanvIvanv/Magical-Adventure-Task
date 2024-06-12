@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
 {
     public RectTransform WindowRect;
-    public RectTransform ParentRect;
+    public WindowRoot Root;
+
     public Vector2 MinSize;
     public Vector2 MaxSize;
     public Vector2 ResizeDirection = new(1f, 1f);
@@ -41,7 +42,7 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
             );
 
         WindowRect.sizeDelta = sizeDelta;
-        WindowRect.ResizeFullyOnScreen(ParentRect);
+        WindowRect.ResizeFullyOnScreen(Root.WindowNecessaries.ParentRectTransform);
 
         _previousPointerPosition = _currentPointerPosition;
     }

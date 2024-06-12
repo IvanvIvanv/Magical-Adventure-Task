@@ -19,6 +19,16 @@
                 "a": 1.0
             },
             "folderImageType": 0
+        },
+        {
+            "name": "Windows",
+            "folderColor": {
+                "r": 0.6301887035369873,
+                "g": 0.6301887035369873,
+                "b": 0.6301887035369873,
+                "a": 1.0
+            },
+            "folderImageType": 0
         }
     ]
 }

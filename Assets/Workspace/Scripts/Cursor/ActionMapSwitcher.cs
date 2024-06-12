@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ActionMapSwitcher : MonoBehaviour
 {
     public InputContainer InputContainer;
-    private bool _isPlayer = true;
+    private bool IsPlayer = true;
+    public readonly UnityEvent<bool> OnControlModeSwitched = new();
 
     private void Start()
     {
@@ -17,13 +19,14 @@ public class ActionMapSwitcher : MonoBehaviour
 
     private void OnMapSwitched(InputAction.CallbackContext context)
     {
-        _isPlayer = !_isPlayer;
+        IsPlayer = !IsPlayer;
         SwitchMap();
+        OnControlModeSwitched.Invoke(IsPlayer);
     }
 
     private void SwitchMap() 
     {
-        if (_isPlayer)
+        if (IsPlayer)
         {
             InputContainer.InputAsset.Player.Enable();
             InputContainer.InputAsset.UI.Disable();

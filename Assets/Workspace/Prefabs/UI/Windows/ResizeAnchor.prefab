@@ -92,3 +92,4 @@ MonoBehaviour:
   ParentRect: {fileID: 0}
   MinSize: {x: 100, y: 50}
   MaxSize: {x: 1000, y: 1000}
+  ResizeDirection: {x: 1, y: 1}
