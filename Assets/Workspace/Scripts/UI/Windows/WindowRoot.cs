@@ -51,6 +51,7 @@ public class WindowRoot : MonoBehaviour
     {
         if (_content != null) Destroy(_content);
         _content = Instantiate(content, ContentContainer);
+        ScrollRect.content = _content.GetComponent<RectTransform>();
     }
 
     public void Construct(WindowNecessaries windowNecessaries)

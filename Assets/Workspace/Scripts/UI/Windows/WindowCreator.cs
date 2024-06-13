@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class WindowCreator : MonoBehaviour
 {
     public Vector2 CreatedWindowOffset = new(5f, -5f);
+    public Vector2 DefaultSize = new(200f, 200f);
 
     public readonly UnityEvent<WindowRoot> OnWindowCreated = new();
 
@@ -55,6 +56,7 @@ public class WindowCreator : MonoBehaviour
     private void PositionInCenter(WindowNecessaries windowNecessaries, RectTransform windowRect)
     {
         windowRect.anchoredPosition = windowNecessaries.ParentRectTransform.rect.center;
+        windowRect.sizeDelta = DefaultSize;
     }
 
     private void PositionInLatest(RectTransform windowRect)
