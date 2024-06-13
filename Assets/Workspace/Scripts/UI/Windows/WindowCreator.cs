@@ -41,6 +41,7 @@ public class WindowCreator : MonoBehaviour
         windowRect.SetPivot(new(0.5f, 0.5f));
         if (LatestCreated == null) PositionInCenter(windowNecessaries, windowRect);
         else PositionInLatest(windowRect);
+        windowRect.WrapInRect(windowNecessaries.ParentRectTransform);
 
         var root = window.GetComponent<WindowRoot>();
         SetWindowProperties(root, windowProperties);

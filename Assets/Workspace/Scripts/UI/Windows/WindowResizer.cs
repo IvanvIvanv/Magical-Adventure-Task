@@ -42,7 +42,7 @@ public class WindowResizer : MonoBehaviour, IPointerDownHandler, IDragHandler
             );
 
         WindowRect.sizeDelta = sizeDelta;
-        WindowRect.ResizeFullyOnScreen(Root.WindowNecessaries.ParentRectTransform);
+        WindowRect.ResizeFullyInRect(Root.WindowNecessaries.ParentRectTransform);
 
         _previousPointerPosition = _currentPointerPosition;
     }

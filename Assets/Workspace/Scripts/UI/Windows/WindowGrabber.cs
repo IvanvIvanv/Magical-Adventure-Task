@@ -24,7 +24,7 @@ public class WindowGrabber : MonoBehaviour, IBeginDragHandler, IDragHandler
         
         Vector2 transformValue = _currentPointerPosition - _previousPointerPosition;
         WindowRect.anchoredPosition += transformValue;
-        WindowRect.KeepFullyOnScreen(Root.WindowNecessaries.ParentRectTransform);
+        WindowRect.KeepFullyInRect(Root.WindowNecessaries.ParentRectTransform);
 
         _previousPointerPosition = _currentPointerPosition;
     }

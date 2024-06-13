@@ -25,7 +25,7 @@ public static class RectTransformExtensions
         return new Rect((Vector2)transform.position - (size * 0.5f), size);
     }
 
-    public static void KeepFullyOnScreen(this RectTransform rect, RectTransform parentRect)
+    public static void KeepFullyInRect(this RectTransform rect, RectTransform parentRect)
     {
         Vector2 pos = rect.localPosition;
 
@@ -38,7 +38,7 @@ public static class RectTransformExtensions
         rect.localPosition = pos;
     }
 
-    public static void ResizeFullyOnScreen(this RectTransform rect, RectTransform parentRect)
+    public static void ResizeFullyInRect(this RectTransform rect, RectTransform parentRect)
     {
         Vector2 originalPivot = rect.pivot;
         rect.SetPivot(new(0f, 0f));
@@ -57,5 +57,20 @@ public static class RectTransformExtensions
 
         rect.SetPivot(originalPivot);
         rect.sizeDelta = newSize;
+    }
+
+    public static void WrapInRect(this RectTransform rect, RectTransform parentRect)
+    {
+        Vector2 pos = rect.localPosition;
+
+        Vector2 minPosition = parentRect.rect.min - rect.rect.min;
+        Vector2 maxPosition = parentRect.rect.max - rect.rect.max;
+
+        if (pos.x > maxPosition.x) pos.x = minPosition.x;
+        if (pos.x < minPosition.x) pos.x = maxPosition.x;
+        if (pos.y > maxPosition.y) pos.y = minPosition.y;
+        if (pos.y < minPosition.y) pos.y = maxPosition.y;
+
+        rect.localPosition = pos;
     }
 }
