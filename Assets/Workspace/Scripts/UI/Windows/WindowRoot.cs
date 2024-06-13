@@ -47,11 +47,12 @@ public class WindowRoot : MonoBehaviour
         WindowSource = source;
     }
 
-    public void SetContent(GameObject content)
+    public void SetContent(WindowProperties windowProperties)
     {
         if (_content != null) Destroy(_content);
-        _content = Instantiate(content, ContentContainer);
+        _content = Instantiate(windowProperties.ContentPrefab, ContentContainer);
         ScrollRect.content = _content.GetComponent<RectTransform>();
+        _content.GetComponent<WindowDataContainer>().WindowData = new(WindowNecessaries, windowProperties);
     }
 
     public void Construct(WindowNecessaries windowNecessaries)

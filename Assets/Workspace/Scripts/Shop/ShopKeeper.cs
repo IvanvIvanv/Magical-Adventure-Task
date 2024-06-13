@@ -6,7 +6,7 @@ public class ShopKeeper : MonoBehaviour, IInteractable
 {
     public WindowCreator WindowCreator;
     public WindowNecessariesContainer NecessariesContainer;
-    public WindowProperties WindowProperties;
+    public WindowShopProperties WindowProperties;
 
     [SerializeField] private string _interactionText;
     public string InteractionText { get => _interactionText; }
@@ -15,7 +15,7 @@ public class ShopKeeper : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        //if (_shopWindow != null) return;
+        if (_shopWindow != null) return;
         _shopWindow = WindowCreator.CreateWindow(NecessariesContainer.WindowNecessaries, WindowProperties);
     }
 }

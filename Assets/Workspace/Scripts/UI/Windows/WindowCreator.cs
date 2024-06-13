@@ -45,8 +45,8 @@ public class WindowCreator : MonoBehaviour
         windowRect.WrapInRect(windowNecessaries.ParentRectTransform);
 
         var root = window.GetComponent<WindowRoot>();
-        SetWindowProperties(root, windowProperties);
         root.Construct(windowNecessaries);
+        SetWindowProperties(root, windowProperties);
 
         Windows.Add(root);
         OnWindowCreated.Invoke(root);
@@ -71,7 +71,7 @@ public class WindowCreator : MonoBehaviour
     {
         if (windowProperties.Name != null) root.SetName(windowProperties.Name);
         root.SetColor(windowProperties.Color);
-        if (windowProperties.ContentPrefab != null) root.SetContent(windowProperties.ContentPrefab);
+        if (windowProperties.ContentPrefab != null) root.SetContent(windowProperties);
         root.SetCloseDistance(windowProperties.WindowCloseDistance, windowProperties.WindowSource);
     }
 

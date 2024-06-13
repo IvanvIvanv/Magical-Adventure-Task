@@ -845,8 +845,13 @@ MonoBehaviour:
       type: 3}
     WindowSource: {fileID: 369047066}
     WindowCloseDistance: 5
-    Name: Shop
-    Color: {r: 0.2969099, g: 0.5886918, b: 0.8415094, a: 1}
+    Name: Starter shop
+    Color: {r: 0.33481666, g: 0.59895027, b: 0.7169812, a: 1}
+    ShopText: Welcome to the starter shop. You can't find many strong items here,
+      but it's better than going with empty hands.
+    Items:
+    - {fileID: 11400000, guid: 67b6a8009659d934a883b85bb54f9f40, type: 2}
+    - {fileID: 11400000, guid: 7ce19a040d8f0b54385314448198fb43, type: 2}
   _interactionText: Buy items
 --- !u!1 &382759783
 GameObject:
