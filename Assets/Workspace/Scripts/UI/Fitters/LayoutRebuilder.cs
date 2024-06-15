@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(RectTransform))]
-public class FitterRefresher : MonoBehaviour
+public class LayoutRebuilder : MonoBehaviour
 {
-    [SerializeField] private bool _refreshOnStart;
+    [FormerlySerializedAs("_refreshOnStart")]
+    [SerializeField] private bool _rebuildOnStart;
     RectTransform _rect;
 
     void Start()
     {
         GetRect();
-        if (_refreshOnStart) Refresh();
+        if (_rebuildOnStart) Rebuild();
     }
 
-    public void Refresh()
+    public void Rebuild()
     {
         GetRect();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
+        UnityEngine.UI.LayoutRebuilder.ForceRebuildLayoutImmediate(_rect);
     }
 
     private void GetRect()

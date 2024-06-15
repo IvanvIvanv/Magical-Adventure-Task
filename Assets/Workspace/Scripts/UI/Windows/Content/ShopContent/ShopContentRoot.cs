@@ -4,19 +4,18 @@ using UnityEngine;
 using TMPro;
 
 [RequireComponent(typeof(WindowDataContainer))]
-public class ShopContentRoot : MonoBehaviour
+public class ShopContentRoot : ContentRoot
 {
     public TextMeshProUGUI ShopTextUGUI;
     public Transform ItemContainer;
 
     public WindowShopProperties WindowShopProperties { get; private set; }
 
-    private WindowDataContainer _dataContainer;
-
-    private void Start()
+    protected override void Start()
     {
-        _dataContainer = GetComponent<WindowDataContainer>();
-        WindowShopProperties = (WindowShopProperties)_dataContainer.WindowData.WindowProperties;
+        base.Start();
+
+        WindowShopProperties = (WindowShopProperties)WindowProperties;
         ShopTextUGUI.text = WindowShopProperties.ShopText;
     }
 }

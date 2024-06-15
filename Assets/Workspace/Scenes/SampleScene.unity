@@ -591,7 +591,6 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -719,66 +718,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &330585548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330585543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 330585546}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 1
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 1
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!1 &369047066
 GameObject:
   m_ObjectHideFlags: 0
@@ -901,17 +840,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WindowCreator: {fileID: 708116391}
   NecessariesContainer: {fileID: 2005295536}
-  WindowProperties:
+  AllowOnlyOneWindow: 1
+  WindowShopProperties:
     Prefab: {fileID: 3852204407929578230, guid: c0741a0ecb3b752419397c563b5108dd,
       type: 3}
     ContentPrefab: {fileID: 3196930794117247985, guid: d06d10d0b77863a47bc222faa6120784,
       type: 3}
     WindowSource: {fileID: 369047066}
     WindowCloseDistance: 5
-    Name: Starter shop
-    Color: {r: 0.33481666, g: 0.59895027, b: 0.7169812, a: 1}
-    ShopText: Welcome to the starter shop. You can't find many strong items here,
-      but it's better than going with empty hands.
+    Name: Shop
+    Color: {r: 0.37638298, g: 0.63292927, b: 0.7584905, a: 1}
+    ShopText: You can buy some starter items here.
     Items:
     - {fileID: 11400000, guid: 67b6a8009659d934a883b85bb54f9f40, type: 2}
     - {fileID: 11400000, guid: 7ce19a040d8f0b54385314448198fb43, type: 2}
@@ -933,6 +872,7 @@ GameObject:
   - component: {fileID: 382759794}
   - component: {fileID: 382759793}
   - component: {fileID: 382759795}
+  - component: {fileID: 382759797}
   - component: {fileID: 382759785}
   - component: {fileID: 382759784}
   - component: {fileID: 382759790}
@@ -1030,6 +970,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
+  - {fileID: 1234292482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &382759789
@@ -1154,6 +1095,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputContainer: {fileID: 1895927257}
   InteractorCrosshair: {fileID: 173529677}
+--- !u!114 &382759797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382759783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72eb89d7ba33db45850f26bfc8bbe12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WindowCreator: {fileID: 708116391}
+  NecessariesContainer: {fileID: 2005295536}
+  AllowOnlyOneWindow: 1
+  WindowProperties:
+    Prefab: {fileID: 3852204407929578230, guid: c0741a0ecb3b752419397c563b5108dd,
+      type: 3}
+    ContentPrefab: {fileID: 3196930794117247985, guid: 68ed3469effa4f643b4b766532ad93fa,
+      type: 3}
+    WindowSource: {fileID: 0}
+    WindowCloseDistance: 0
+    Name: Inventory
+    Color: {r: 0.5159344, g: 0.8792453, b: 0.5543589, a: 1}
+    ConnectedInventory: {fileID: 1234292483}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,27 +1939,27 @@ PrefabInstance:
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.25
+      value: 0.564
       objectReference: {fileID: 0}
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.047
       objectReference: {fileID: 0}
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.87
+      value: 0.72
       objectReference: {fileID: 0}
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9238795
+      value: 0.98509884
       objectReference: {fileID: 0}
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.38268366
+      value: 0.1719892
       objectReference: {fileID: 0}
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
@@ -2008,7 +1974,7 @@ PrefabInstance:
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 45
+      value: 19.807
       objectReference: {fileID: 0}
     - target: {fileID: 1301319418761389796, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
@@ -2020,6 +1986,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4511384599975671441, guid: c91a7dc82a316ee40b30b12e06ad0b25,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9bf9c766dfd0c3646a7dd2d33c95bcd1, type: 2}
     - target: {fileID: 6250691305289232454, guid: c91a7dc82a316ee40b30b12e06ad0b25,
         type: 3}
       propertyPath: m_Name
@@ -2086,6 +2057,51 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1137764322}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1234292481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1234292482}
+  - component: {fileID: 1234292483}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1234292482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234292481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 382759787}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1234292483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1234292481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a34fe1ac3e9ad048a9038e6d0882436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _items: []
 --- !u!1 &1356028572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2210,7 +2226,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1173523294}
   m_Father: {fileID: 330585546}

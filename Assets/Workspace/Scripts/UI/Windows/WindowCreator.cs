@@ -4,23 +4,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WindowCreator : MonoBehaviour
+public class WindowCreator : WindowListContainer
 {
     public Vector2 CreatedWindowOffset = new(5f, -5f);
     public Vector2 DefaultSize = new(200f, 200f);
 
     public readonly UnityEvent<WindowRoot> OnWindowCreated = new();
-
-    private List<WindowRoot> _windows = new();
-    public List<WindowRoot> Windows
-    {
-        get
-        {
-            _windows.RemoveAll(window => window == null);
-            return _windows;
-        }
-        private set => _windows = value;
-    }
 
     public WindowRoot LatestCreated { get => Windows.LastOrDefault(); }
 
