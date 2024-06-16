@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1962b3bf4012c4343ac44cb311d8419c, type: 3}
+  m_Name: BeamWand
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Beam wand
+  <Description>k__BackingField: Shoots beams
+  <Cooldown>k__BackingField: 5
+  <Icon>k__BackingField: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  <Cost>k__BackingField: 38
+  <Prefab>k__BackingField: {fileID: 6250691305289232454, guid: 851fb52d52c6d0c4c8ad60de31240df1,
+    type: 3}
+  <HandHeldPosition>k__BackingField: {x: 0.564, y: -0.047, z: 0.72}
+  <HandHeldEuler>k__BackingField: {x: 19.80699, y: 0, z: 0}
+  <Damage>k__BackingField: 40
+  <Speed>k__BackingField: 1000
+  <Offset>k__BackingField: 3
+  <EffectPrefab>k__BackingField: {fileID: 334609590870018640, guid: 73e251ccd75d5404ea0c6f0bf92e2c47,
+    type: 3}

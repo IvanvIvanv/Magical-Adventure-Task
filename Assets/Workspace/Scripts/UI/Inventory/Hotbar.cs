@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Hotbar : MonoBehaviour
 {
+    public Reload Reload;
     public Inventory ConnectedInventory;
     public InteractorCrosshair InteractorCrosshair;
     public ItemSlotsUI ItemSlotsUI;
@@ -60,5 +61,6 @@ public class Hotbar : MonoBehaviour
         var item = ItemSlotsUI.ItemUIs[Selected].Item;
         if (item == null) return;
         item.Trigger(InteractorCrosshair.RayFromCrosshair);
+        Reload.StartCooldown(item.Cooldown);
     }
 }

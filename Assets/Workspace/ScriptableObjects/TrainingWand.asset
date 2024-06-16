@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Training Wand
   <Description>k__BackingField: Literally just a stick
+  <Cooldown>k__BackingField: 1
   <Icon>k__BackingField: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   <Cost>k__BackingField: 0
   <Prefab>k__BackingField: {fileID: 6250691305289232454, guid: 175ded61464fc5449a1c6d2f73645b18,
     type: 3}
   <HandHeldPosition>k__BackingField: {x: 0.564, y: -0.047, z: 0.72}
   <HandHeldEuler>k__BackingField: {x: 19.80699, y: 0, z: 0}
-  <Cooldown>k__BackingField: 1
-  <Damage>k__BackingField: 2
+  <Damage>k__BackingField: 5
   <Range>k__BackingField: 3
+  <EffectPrefab>k__BackingField: {fileID: 334609590870018640, guid: 566389e77a5c1b74a93617325cfc77ff,
+    type: 3}

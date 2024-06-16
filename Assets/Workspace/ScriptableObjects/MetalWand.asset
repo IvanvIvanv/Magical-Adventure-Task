@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Metal Wand
   <Description>k__BackingField: Hits hard
+  <Cooldown>k__BackingField: 3
   <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   <Cost>k__BackingField: 50
   <Prefab>k__BackingField: {fileID: 6250691305289232454, guid: 4278f3575b654ee4eb2ffe89dad997dc,
     type: 3}
   <HandHeldPosition>k__BackingField: {x: 0.564, y: -0.047, z: 0.72}
   <HandHeldEuler>k__BackingField: {x: 19.80699, y: 0, z: 0}
-  <Cooldown>k__BackingField: 3
-  <Damage>k__BackingField: 12
+  <Damage>k__BackingField: 20
   <Range>k__BackingField: 5
+  <EffectPrefab>k__BackingField: {fileID: 334609590870018640, guid: 566389e77a5c1b74a93617325cfc77ff,
+    type: 3}

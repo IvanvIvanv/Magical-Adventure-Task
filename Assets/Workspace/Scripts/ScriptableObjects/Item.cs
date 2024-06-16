@@ -7,6 +7,7 @@ public abstract class Item : ScriptableObject
 {
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public string Description { get; private set; }
+    [field: SerializeField] public float Cooldown { get; private set; }
     [field: SerializeField] public Sprite Icon { get; private set; }
     [field: SerializeField] public float Cost { get; private set; }
     [field: SerializeField] public Object Prefab { get; private set; }
