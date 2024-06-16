@@ -42,4 +42,9 @@ public class EnemyController : MonoBehaviour, IHealth
         return tMin;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!collision.gameObject.TryGetComponent<PlayerHealth>(out var playerHealth)) return;
+        playerHealth.Health -= 5f;
+    }
 }
