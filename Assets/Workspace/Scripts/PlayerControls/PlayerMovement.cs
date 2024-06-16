@@ -23,4 +23,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDirection = inputDirection.InputDirectionToWorldDirection();
         _rb.AddForce(transform.rotation * moveDirection * Speed, ForceMode.Impulse);
     }
+
+    public void Move(Vector3 targetPosition)
+    {
+        if (_groundedChecker != null && !_groundedChecker.IsGrounded) return;
+        _rb.AddForce(Vector3.Normalize(targetPosition - transform.position) * Speed, ForceMode.Impulse);
+    }
 }

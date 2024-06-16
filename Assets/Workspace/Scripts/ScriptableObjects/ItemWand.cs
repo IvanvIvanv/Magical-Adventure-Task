@@ -5,6 +5,5 @@ using UnityEngine;
 public abstract class ItemWand : Item
 {
     public abstract string ElementalName { get; }
-
-    public abstract void Trigger(Transform startPosition);
+    [field: SerializeField] public float Cooldown { get; private set; }
 }

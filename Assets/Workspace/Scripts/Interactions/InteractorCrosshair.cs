@@ -10,7 +10,9 @@ public class InteractorCrosshair : MonoBehaviour
     private RectTransform _rectTransform;
     private IInteractable _objectInCrosshair;
 
-    private void Start()
+    public Ray RayFromCrosshair { get => Camera.main.ScreenPointToRay(_rectTransform.position); }
+
+private void Start()
     {
         _rectTransform = GetComponent<RectTransform>();
     }
@@ -22,7 +24,7 @@ public class InteractorCrosshair : MonoBehaviour
 
     private bool RaycastInteraction()
     {
-        Ray ray = Camera.main.ScreenPointToRay(_rectTransform.position);
+        Ray ray = RayFromCrosshair;
         if (!Physics.Raycast(ray, out var hitInfo, MaxDistance)) return false;
         if (!hitInfo.collider.TryGetComponent<IInteractable>(out var iinteractable)) return false;
         _objectInCrosshair = iinteractable;

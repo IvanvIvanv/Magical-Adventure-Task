@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 806281541066237917}
   - component: {fileID: 7219907347171039581}
   - component: {fileID: 5198903055166859386}
+  - component: {fileID: 5103358531029421167}
   m_Layer: 0
   m_Name: SlotUI
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.38294882, g: 0.8415094, b: 0.36042005, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -92,3 +93,15 @@ MonoBehaviour:
   m_MaskInteraction: 85
   m_UseStencil: 1
   m_RaycastFilter: 0
+--- !u!114 &5103358531029421167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591560946760164823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a332eeb80b3835a46996d96142fbc548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -16,5 +16,10 @@ MonoBehaviour:
   <Description>k__BackingField: Hits hard
   <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   <Cost>k__BackingField: 50
-  <Damage>k__BackingField: 0
+  <Prefab>k__BackingField: {fileID: 6250691305289232454, guid: 4278f3575b654ee4eb2ffe89dad997dc,
+    type: 3}
+  <HandHeldPosition>k__BackingField: {x: 0.564, y: -0.047, z: 0.72}
+  <HandHeldEuler>k__BackingField: {x: 19.80699, y: 0, z: 0}
+  <Cooldown>k__BackingField: 3
+  <Damage>k__BackingField: 12
   <Range>k__BackingField: 5

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInputBinder : MonoBehaviour
+public class PlayerInputBinder : MonoBehaviour, IEnemyTarget
 {
     public InputContainer InputContainer;
     public InteractorCrosshair InteractorCrosshair;
+    public Hotbar Hotbar;
     private PlayerMovement _playerMovement;
     private PlayerJump _playerJump;
     private PlayerLook _playerLook;
     private PlayerInventory _playerInventory;
+    private PlayerAttack _playerAttack;
 
     private void Start()
     {
@@ -18,10 +20,13 @@ public class PlayerInputBinder : MonoBehaviour
         _playerJump = GetComponent<PlayerJump>();
         _playerLook = GetComponent<PlayerLook>();
         _playerInventory = GetComponent<PlayerInventory>();
+        _playerAttack = GetComponent<PlayerAttack>();
         InputContainer.InputAsset.Player.Jump.started += OnJump;
         InputContainer.InputAsset.Player.Look.started += OnLook;
         InputContainer.InputAsset.Player.Interact.started += OnInteract;
         InputContainer.InputAsset.Player.Inventory.started += OnInventory;
+        InputContainer.InputAsset.Player.ScrollHotbar.started += OnScrollHotbar;
+        InputContainer.InputAsset.Player.Attack.started += OnPlayerAttack;
     }
 
     private void FixedUpdate()
@@ -53,5 +58,17 @@ public class PlayerInputBinder : MonoBehaviour
     private void OnInventory(InputAction.CallbackContext context)
     {
         _playerInventory.ToggleInventory();
+    }
+
+    private void OnScrollHotbar(InputAction.CallbackContext context)
+    {
+        float scrollDir = context.ReadValue<Vector2>().y;
+        if (scrollDir > 0) Hotbar.Selected--;
+        else Hotbar.Selected++;
+    }
+
+    private void OnPlayerAttack(InputAction.CallbackContext context)
+    {
+        _playerAttack.Attack();
     }
 }

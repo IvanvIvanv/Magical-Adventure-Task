@@ -10,8 +10,10 @@ public class PhysicalWand : ItemWand
 
     public override string ElementalName => "Physical";
 
-    public override void Trigger(Transform startPosition)
+    public override void Trigger(Ray ray)
     {
-        throw new System.NotImplementedException();
+        if (!Physics.Raycast(ray, out var hitInfo, Range)) return;
+        if (!hitInfo.collider.TryGetComponent<IHealth>(out var iHealth)) return;
+        iHealth.Health -= Damage;
     }
 }
