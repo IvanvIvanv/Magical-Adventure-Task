@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float Damage = 10f;
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (!collision.gameObject.TryGetComponent<PlayerHealth>(out var playerHealth)) return;
+        playerHealth.Health -= Damage;
     }
 }

@@ -2,21 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IHealth
+public class EnemyController : MonoBehaviour
 {
     public SpottingRadius SpottingRadius;
     public PlayerMovement PlayerMovement;
-
-    [SerializeField] private float _health = 100f;
-    public float Health
-    {
-        get => _health;
-        set
-        {
-            _health = value;
-            if (_health <= 0) Destroy(gameObject);
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -40,11 +29,5 @@ public class EnemyController : MonoBehaviour, IHealth
             }
         }
         return tMin;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!collision.gameObject.TryGetComponent<PlayerHealth>(out var playerHealth)) return;
-        playerHealth.Health -= 5f;
     }
 }
