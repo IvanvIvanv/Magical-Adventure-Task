@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 9143251048504979788}
   - component: {fileID: 5041096035773190449}
   - component: {fileID: 2812813181028066442}
+  - component: {fileID: 4339110180952053009}
   - component: {fileID: 7997275388934009339}
   - component: {fileID: 1989555722422950822}
   - component: {fileID: 3899513997701545565}
@@ -92,6 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4342508b877d4439fa9b9bc0cc11d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Renderer: {fileID: 1989555722422950822}
+  EnemyColor: {fileID: 2812813181028066442}
   _health: 100
 --- !u!114 &5088067760581478617
 MonoBehaviour:
@@ -244,6 +247,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70824edc186b54e42b998b9f85cf91c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4339110180952053009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231322961173539528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c1014a6a3568a46aea3e0e82977d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyHealth: {fileID: 8946656398195897155}
 --- !u!33 &7997275388934009339
 MeshFilter:
   m_ObjectHideFlags: 0
