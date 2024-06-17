@@ -7,14 +7,24 @@ public class EnemyController : MonoBehaviour
     public SpottingRadius SpottingRadius;
     public PlayerMovement PlayerMovement;
 
-    private void FixedUpdate()
+    public Transform ClosestTarget
     {
-        if (SpottingRadius.TransformTargets.Count == 0) return;
-        Transform closest = GetClosestEnemy(SpottingRadius.TransformTargets.ToArray());
-        PlayerMovement.Move(closest.position);
+        get
+        {
+            if (SpottingRadius.TransformTargets.Count == 0) return null;
+            return GetClosestEnemy(SpottingRadius.TransformTargets.ToArray());
+        }
     }
 
-    Transform GetClosestEnemy(Transform[] enemies)
+    private void FixedUpdate()
+    {
+        if (ClosestTarget == null) return;
+        PlayerMovement.Move(ClosestTarget.position);
+        transform.LookAt(ClosestTarget.position);
+        transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+    }
+
+    public Transform GetClosestEnemy(Transform[] enemies)
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;

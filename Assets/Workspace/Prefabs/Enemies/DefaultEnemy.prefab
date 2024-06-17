@@ -63,6 +63,7 @@ MonoBehaviour:
   EnemyHealth: {fileID: 8946656398195897155}
   EnemyDamage: {fileID: 9143251048504979788}
   EnemyMovement: {fileID: 7356275664250028480}
+  EnemyController: {fileID: 1478163517458362760}
   SpottingRadius: {fileID: 9200468946243676065}
   EnemyColor: {fileID: 2812813181028066442}
 --- !u!114 &1478163517458362760
@@ -219,7 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c28756c71125db346afea5342992f147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
 --- !u!114 &5041096035773190449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70824edc186b54e42b998b9f85cf91c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!33 &7997275388934009339
 MeshFilter:
   m_ObjectHideFlags: 0

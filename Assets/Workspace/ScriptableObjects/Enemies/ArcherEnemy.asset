@@ -16,8 +16,12 @@ MonoBehaviour:
   <Damage>k__BackingField: 15
   <Health>k__BackingField: 60
   <Speed>k__BackingField: 30
-  <SpottingRange>k__BackingField: 15
+  <SpottingRange>k__BackingField: 30
+  <CloseAttackCooldown>k__BackingField: 1
   <RangedWeapon>k__BackingField: {fileID: 4390308910443156935, guid: fd6cd77628e712f499677687f4e3da96,
     type: 3}
-  <WeaponLocalPosition>k__BackingField: {x: 0, y: 0, z: 0}
-  <WeaponLocalEuler>k__BackingField: {x: 0, y: 0, z: 0}
+  <WeaponLocalPosition>k__BackingField: {x: 0.74951833, y: 0.030618593, z: -0.004031718}
+  <WeaponLocalEuler>k__BackingField: {x: 355, y: 357, z: 0.00000009149657}
+  <ShootCooldown>k__BackingField: 3
+  <ShootForce>k__BackingField: 1800
+  <ProjectileLifeTime>k__BackingField: 5

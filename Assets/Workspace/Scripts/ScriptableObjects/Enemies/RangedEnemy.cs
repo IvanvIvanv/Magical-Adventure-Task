@@ -9,4 +9,6 @@ public class RangedEnemy : EnemyData
     [field: SerializeField] public Vector3 WeaponLocalPosition { get; private set; }
     [field: SerializeField] public Vector3 WeaponLocalEuler { get; private set; }
     [field: SerializeField] public float ShootCooldown { get; private set; }
+    [field: SerializeField] public float ShootForce { get; private set; }
+    [field: SerializeField] public float ProjectileLifeTime { get; private set; }
 }
