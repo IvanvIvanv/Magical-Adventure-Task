@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90c1014a6a3568a46aea3e0e82977d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyDataInjector: {fileID: 7003914326545804006}
   EnemyHealth: {fileID: 8946656398195897155}
 --- !u!33 &7997275388934009339
 MeshFilter:

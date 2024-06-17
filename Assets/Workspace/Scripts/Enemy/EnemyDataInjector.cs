@@ -14,7 +14,6 @@ public class EnemyDataInjector : MonoBehaviour
 
     private void Start()
     {
-        EnemyHealth.Health = EnemyData.Health;
         EnemyDamage.EnemyData = EnemyData;
         EnemyMovement.Speed = EnemyData.Speed;
         SpottingRadius.radius = EnemyData.SpottingRange;
