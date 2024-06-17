@@ -11,13 +11,13 @@ public class EnemySaver : MonoBehaviour
 
     private void Start()
     {
-        EnemyHealth.Health = EnemyDataInjector.EnemyData.Health;
+        EnemyHealth.HealthNoFlash = EnemyDataInjector.EnemyData.Health;
 
         if (!JsonSaverLib.Load<EnemyJsonData>(GetHashCode(), out var loadedObject)) return;
         _jsonData = loadedObject;
 
         transform.SetPositionAndRotation(_jsonData.Position, _jsonData.Rotation);
-        EnemyHealth.Health = _jsonData.Health;
+        EnemyHealth.HealthNoFlash = _jsonData.Health;
     }
 
     private void OnDestroy() => Save();

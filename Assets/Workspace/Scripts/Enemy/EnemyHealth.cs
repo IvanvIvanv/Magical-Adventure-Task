@@ -19,6 +19,15 @@ public class EnemyHealth : MonoBehaviour, IHealth
             if (_health <= 0) Destroy(gameObject);
         }
     }
+    public float HealthNoFlash
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            if (_health <= 0) Destroy(gameObject);
+        }
+    }
 
     private IEnumerator FlashRoutine()
     {
