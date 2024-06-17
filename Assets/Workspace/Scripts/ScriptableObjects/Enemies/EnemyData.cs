@@ -10,5 +10,4 @@ public class EnemyData : ScriptableObject
     [field: SerializeField] public float Health { get; private set; } = 100f;
     [field: SerializeField] public float Speed { get; private set; } = 100f;
     [field: SerializeField] public float SpottingRange { get; private set; } = 5f;
-    [field: SerializeField] public Object RangedWeapon { get; private set; }
 }
