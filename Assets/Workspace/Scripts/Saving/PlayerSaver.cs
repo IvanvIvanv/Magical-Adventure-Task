@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerSaver : MonoBehaviour
+public class PlayerSaver : MonoBehaviourID
 {
     public Inventory Inventory;
     public Inventory Hotbar;
@@ -12,7 +12,7 @@ public class PlayerSaver : MonoBehaviour
 
     private void Start()
     {
-        if (!JsonSaverLib.Load<PlayerJsonData>(GetHashCode(), out var loadedObject)) return;
+        if (!JsonSaverLib.Load<PlayerJsonData>(ID, out var loadedObject)) return;
         _playerJsonData = loadedObject;
         Inventory.Items = _playerJsonData.Inventory;
         Hotbar.Items = _playerJsonData.Hotbar;
@@ -30,6 +30,6 @@ public class PlayerSaver : MonoBehaviour
         _playerJsonData.Rotation = transform.rotation;
         _playerJsonData.Health = PlayerHealth.Health;
 
-        JsonSaverLib.Save(_playerJsonData, GetHashCode());
+        JsonSaverLib.Save(_playerJsonData, ID);
     }
 }

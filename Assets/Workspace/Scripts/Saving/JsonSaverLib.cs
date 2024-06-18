@@ -8,17 +8,17 @@ public static class JsonSaverLib
 {
     public static readonly string _savingPath = "Json";
 
-    public static void Save<T>(T obj, int hash)
+    public static void Save<T>(T obj, string id)
     {
         Directory.CreateDirectory(Path.Combine(new string[] { Application.persistentDataPath, _savingPath }));
-        var path = Path.Combine(new string[] { Application.persistentDataPath, _savingPath, hash + ".json"});
+        var path = Path.Combine(new string[] { Application.persistentDataPath, _savingPath, id + ".json"});
         var json = ToJson(obj);
         File.WriteAllText(path, json);
     }
 
-    public static bool Load<T>(int hash, out T loadedObject)
+    public static bool Load<T>(string id, out T loadedObject)
     {
-        var path = Path.Combine(new string[] { Application.persistentDataPath, _savingPath, hash + ".json" });
+        var path = Path.Combine(new string[] { Application.persistentDataPath, _savingPath, id + ".json" });
         loadedObject = default;
         if (!File.Exists(path)) return false;
         var json = File.ReadAllText(path);

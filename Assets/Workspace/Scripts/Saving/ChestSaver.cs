@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChestSaver : MonoBehaviour
+public class ChestSaver : MonoBehaviourID
 {
     public Inventory Inventory;
 
@@ -10,7 +10,7 @@ public class ChestSaver : MonoBehaviour
 
     private void Start()
     {
-        if (!JsonSaverLib.Load<ChestJsonData>(GetHashCode(), out var loadedObject)) return;
+        if (!JsonSaverLib.Load<ChestJsonData>(ID, out var loadedObject)) return;
         _jsonData = loadedObject;
 
         Inventory.Items = _jsonData.Items;
@@ -22,6 +22,6 @@ public class ChestSaver : MonoBehaviour
 
         _jsonData.Items = Inventory.Items;
 
-        JsonSaverLib.Save(_jsonData, GetHashCode());
+        JsonSaverLib.Save(_jsonData, ID);
     }
 }

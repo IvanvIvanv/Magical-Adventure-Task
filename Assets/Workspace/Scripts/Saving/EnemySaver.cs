@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySaver : MonoBehaviour
+public class EnemySaver : MonoBehaviourID
 {
     public EnemyDataInjector EnemyDataInjector;
     public EnemyHealth EnemyHealth;
@@ -13,7 +14,7 @@ public class EnemySaver : MonoBehaviour
     {
         EnemyHealth.HealthNoFlash = EnemyDataInjector.EnemyData.Health;
 
-        if (!JsonSaverLib.Load<EnemyJsonData>(GetHashCode(), out var loadedObject)) return;
+        if (!JsonSaverLib.Load<EnemyJsonData>(ID, out var loadedObject)) return;
         _jsonData = loadedObject;
 
         transform.SetPositionAndRotation(_jsonData.Position, _jsonData.Rotation);
@@ -32,6 +33,6 @@ public class EnemySaver : MonoBehaviour
         _jsonData.Rotation = transform.rotation;
         _jsonData.Health = EnemyHealth.Health;
 
-        JsonSaverLib.Save(_jsonData, GetHashCode());
+        JsonSaverLib.Save(_jsonData, ID);
     }
 }

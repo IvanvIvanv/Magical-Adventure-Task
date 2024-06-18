@@ -8,6 +8,7 @@ public class PlayEffectOnDestroy : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!gameObject.scene.isLoaded) return;
         Instantiate(Prefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
     }
 }
